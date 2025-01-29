@@ -10,11 +10,12 @@
 
     <Grid>
         <!--
- Разметка страницы
- -->
+Разметка страницы
+-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -23,18 +24,24 @@
         </Grid.RowDefinitions>
 
         <!--
- Цветные поля
- -->
+Цветные поля
+-->
         <Rectangle Grid.RowSpan="3"
-     Fill="#ffffe1"/>
-        <Rectangle Grid.ColumnSpan="2"
-     Fill="#ffffe1"/>
+    Fill="#ffffe1"/>
+        <Rectangle Grid.ColumnSpan="3"
+    Fill="#ffffe1"/>
 
+        <!--
+        Кнопка назад
+        -->
+        <Button Style="{StaticResource back}" 
+        Grid.Row="1" Click="BackBtn_Click"/>
         <!--
  Лого
  -->
+
         <Image Source="\service_logo.png"
-        Height="80"/>
+        Height="80" MouseDown="Image_MouseDown"/>
         <!--
  Заголовок
  -->

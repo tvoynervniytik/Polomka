@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Polomka.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ServicesPage.xaml
+    /// Логика взаимодействия для ClientServicesPage.xaml
     /// </summary>
-    public partial class ServicesPage : Page
+    public partial class ClientServicesPage : Page
     {
-        public ServicesPage()
+        public ClientServicesPage()
         {
             InitializeComponent();
         }
@@ -29,7 +29,6 @@ namespace Polomka.Pages
         {
             NavigationService.Navigate(new MainPage());
         }
-
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
             NavigationService.Navigate(new MainPage());

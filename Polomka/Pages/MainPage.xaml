@@ -10,11 +10,12 @@
 
     <Grid>
         <!--
- Разметка страницы
- -->
+Разметка страницы
+-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -23,12 +24,12 @@
         </Grid.RowDefinitions>
 
         <!--
- Цветные поля
- -->
+Цветные поля
+-->
         <Rectangle Grid.RowSpan="3"
-     Fill="#ffffe1"/>
-        <Rectangle Grid.ColumnSpan="2"
-     Fill="#ffffe1"/>
+    Fill="#ffffe1"/>
+        <Rectangle Grid.ColumnSpan="3"
+    Fill="#ffffe1"/>
 
         <!--
  Лого
@@ -46,9 +47,9 @@
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal">
-            <Button Content="Клиенты" />
-            <Button Content="Услуги" />
-            <Button Content="Запись на услугу" Width="300"/>
+            <Button Content="Клиенты" Click="Button_Click" />
+            <Button Content="Услуги" Click="Button_Click_1" />
+            <Button Content="Запись на услугу" Width="300" Click="Button_Click_2"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -24,5 +24,14 @@ namespace Polomka.Pages
         {
             InitializeComponent();
         }
+
+        private void BackBtn_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MainPage());
+        }
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new MainPage());
+        }
     }
 }

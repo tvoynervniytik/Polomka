@@ -96,8 +96,8 @@
             </Style.Triggers>
         </Style>
         <Style TargetType="Button" x:Key="back">
-            <Setter Property="Background" Value="#ffffe1"></Setter>
-            <Setter Property="Foreground" Value="#ff9c1a"></Setter>
+            <Setter Property="Background" Value="#ff9c1a"></Setter>
+            <Setter Property="Foreground" Value="#ffffe1"></Setter>
             <Setter Property="BorderBrush" Value="Transparent"></Setter>
 
             <Setter Property="Content" Value="← назад"/>
