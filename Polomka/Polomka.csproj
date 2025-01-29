@@ -67,8 +67,22 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AuthorizationPage.xaml.cs">
+      <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -93,6 +107,111 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Photos\1.jpg" />
+    <Resource Include="Photos\10.jpg" />
+    <Resource Include="Photos\11.jpg" />
+    <Resource Include="Photos\12.jpg" />
+    <Resource Include="Photos\13.jpg" />
+    <Resource Include="Photos\14.jpg" />
+    <Resource Include="Photos\15.jpg" />
+    <Resource Include="Photos\16.jpg" />
+    <Resource Include="Photos\17.jpg" />
+    <Resource Include="Photos\18.jpg" />
+    <Resource Include="Photos\19.jpg" />
+    <Resource Include="Photos\2.jpg" />
+    <Resource Include="Photos\20.jpg" />
+    <Resource Include="Photos\21.jpg" />
+    <Resource Include="Photos\22.jpg" />
+    <Resource Include="Photos\23.jpg" />
+    <Resource Include="Photos\24.jpg" />
+    <Resource Include="Photos\25.jpg" />
+    <Resource Include="Photos\26.jpg" />
+    <Resource Include="Photos\27.jpg" />
+    <Resource Include="Photos\28.jpg" />
+    <Resource Include="Photos\29.jpg" />
+    <Resource Include="Photos\3.jpg" />
+    <Resource Include="Photos\30.jpg" />
+    <Resource Include="Photos\31.jpg" />
+    <Resource Include="Photos\32.jpg" />
+    <Resource Include="Photos\33.jpg" />
+    <Resource Include="Photos\34.jpg" />
+    <Resource Include="Photos\35.jpg" />
+    <Resource Include="Photos\36.jpg" />
+    <Resource Include="Photos\37.jpg" />
+    <Resource Include="Photos\38.jpg" />
+    <Resource Include="Photos\39.jpg" />
+    <Resource Include="Photos\4.jpg" />
+    <Resource Include="Photos\40.jpg" />
+    <Resource Include="Photos\41.jpg" />
+    <Resource Include="Photos\42.jpg" />
+    <Resource Include="Photos\43.jpg" />
+    <Resource Include="Photos\44.jpg" />
+    <Resource Include="Photos\47.jpg" />
+    <Resource Include="Photos\48.jpg" />
+    <Resource Include="Photos\5.jpg" />
+    <Resource Include="Photos\6.jpg" />
+    <Resource Include="Photos\7.jpg" />
+    <Resource Include="Photos\8.jpg" />
+    <Resource Include="Photos\9.jpg" />
+    <Resource Include="Photos\m1.jpg" />
+    <Resource Include="Photos\m10.jpg" />
+    <Resource Include="Photos\m11.jpg" />
+    <Resource Include="Photos\m12.jpg" />
+    <Resource Include="Photos\m13.jpg" />
+    <Resource Include="Photos\m14.jpg" />
+    <Resource Include="Photos\m15.jpg" />
+    <Resource Include="Photos\m16.jpg" />
+    <Resource Include="Photos\m17.jpg" />
+    <Resource Include="Photos\m18.jpg" />
+    <Resource Include="Photos\m19.jpg" />
+    <Resource Include="Photos\m2.jpg" />
+    <Resource Include="Photos\m20.jpg" />
+    <Resource Include="Photos\m21.jpg" />
+    <Resource Include="Photos\m22.jpg" />
+    <Resource Include="Photos\m23.jpg" />
+    <Resource Include="Photos\m24.jpg" />
+    <Resource Include="Photos\m25.jpg" />
+    <Resource Include="Photos\m26.jpg" />
+    <Resource Include="Photos\m27.jpg" />
+    <Resource Include="Photos\m28.jpg" />
+    <Resource Include="Photos\m29.jpg" />
+    <Resource Include="Photos\m3.jpg" />
+    <Resource Include="Photos\m30.jpg" />
+    <Resource Include="Photos\m31.jpg" />
+    <Resource Include="Photos\m32.jpg" />
+    <Resource Include="Photos\m33.jpg" />
+    <Resource Include="Photos\m34.jpg" />
+    <Resource Include="Photos\m35.jpg" />
+    <Resource Include="Photos\m36.jpg" />
+    <Resource Include="Photos\m37.jpg" />
+    <Resource Include="Photos\m38.jpg" />
+    <Resource Include="Photos\m39.jpg" />
+    <Resource Include="Photos\m4.jpg" />
+    <Resource Include="Photos\m40.jpg" />
+    <Resource Include="Photos\m41.jpg" />
+    <Resource Include="Photos\m42.jpg" />
+    <Resource Include="Photos\m43.jpg" />
+    <Resource Include="Photos\m44.jpg" />
+    <Resource Include="Photos\m45.jpg" />
+    <Resource Include="Photos\m46.jpg" />
+    <Resource Include="Photos\m47.jpg" />
+    <Resource Include="Photos\m48.jpg" />
+    <Resource Include="Photos\m49.jpg" />
+    <Resource Include="Photos\m5.jpg" />
+    <Resource Include="Photos\m50.jpg" />
+    <Resource Include="Photos\m6.jpg" />
+    <Resource Include="Photos\m7.jpg" />
+    <Resource Include="Photos\m8.jpg" />
+    <Resource Include="Photos\m9.jpg" />
+    <Resource Include="Photos\m96.jpg" />
+    <Resource Include="Photos\m97.jpg" />
+    <Resource Include="Photos\m98.jpg" />
+    <Resource Include="Photos\m99.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="service_logo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
