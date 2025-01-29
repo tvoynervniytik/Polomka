@@ -16,6 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -28,7 +29,7 @@
         -->
         <Rectangle Grid.RowSpan="3"
             Fill="#ffffe1"/>
-        <Rectangle Grid.ColumnSpan="2"
+        <Rectangle Grid.ColumnSpan="3"
             Fill="#ffffe1"/>
 
         <!--
@@ -46,7 +47,8 @@
 
         <StackPanel Grid.Row="2" Grid.Column="1"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center"
+                    Margin="0 200"
+                    VerticalAlignment="Top"
                     Width="300">
             <TextBlock Text="Логин" Style="{StaticResource default}"/>
             <TextBox x:Name="loginTb"/>

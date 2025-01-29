@@ -1,4 +1,4 @@
-﻿<Page x:Class="Polomka.Pages.MainPage"
+﻿<Page x:Class="Polomka.Pages.ClientsPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Polomka.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1450"
-      Title="MainPage">
+      Title="ClientsPage">
 
     <Grid>
         <!--
@@ -38,17 +38,9 @@
         <!--
  Заголовок
  -->
-        <TextBlock Text="Главная страница" 
+        <TextBlock Text="Клиенты" 
             Grid.Row="1" Grid.Column="1"
             Style="{StaticResource Main}"/>
 
-        <StackPanel Grid.Row="2" Grid.Column="1" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Orientation="Horizontal">
-            <Button Content="Клиенты" />
-            <Button Content="Услуги" />
-            <Button Content="Запись на услугу" Width="300"/>
-        </StackPanel>
     </Grid>
 </Page>

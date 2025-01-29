@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Polomka"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="900" Width="1450">
+        Title="Polomka" Icon="\service_logo.png" Height="900" Width="1450">
     <Grid>
         <Frame x:Name="navFr" NavigationUIVisibility="Hidden"/>
     </Grid>
