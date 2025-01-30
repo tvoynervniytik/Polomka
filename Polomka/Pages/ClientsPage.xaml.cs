@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -44,6 +45,15 @@ namespace Polomka.Pages
         private void Refresh()
         {
             clients = new List<Client>(DBConnection.polomka.Client);
+            if (dateCb.SelectedItem != null)
+            {
+                if (dateCb.SelectedIndex == 0)
+                    clients.Sort((c1,c2) => c1.RegistrationDate.CompareTo(c2.RegistrationDate));
+                else if (dateCb.SelectedIndex == 1)
+                    clients.Sort((c1, c2) => c2.RegistrationDate.CompareTo(c1.RegistrationDate));
+                else
+                    clients = new List<Client>(DBConnection.polomka.Client);
+            }
             if (surnameTb.Text != "")
                 clients = clients.Where(c => c.FirstName.ToLower().StartsWith(surnameTb.Text.Trim().ToLower())).ToList();
             //if (maleChb.IsChecked == false)
@@ -108,6 +118,11 @@ namespace Polomka.Pages
         }
 
         private void femaleChb_Checked(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void dateTb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Refresh();
         }

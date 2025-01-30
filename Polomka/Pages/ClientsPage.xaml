@@ -56,7 +56,7 @@
                 <TextBlock Text="Фамилия" Style="{StaticResource default}"/>
                 <TextBox Margin="10 0" x:Name="surnameTb" TextChanged="surnameTb_TextChanged"/>
                 <TextBlock Text="Дата регистрации" Style="{StaticResource default}"/>
-                <ComboBox Margin="10 0" Width="200" x:Name="dateTb">
+                <ComboBox Margin="10 0" Width="200" x:Name="dateCb" SelectionChanged="dateTb_SelectionChanged">
                     <ComboBoxItem>
                         <TextBlock Text="По возрастанию ↑"/>
                     </ComboBoxItem>
