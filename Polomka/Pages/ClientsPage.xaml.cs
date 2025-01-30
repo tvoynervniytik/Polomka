@@ -40,7 +40,7 @@ namespace Polomka.Pages
         }
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new ClientsAddPage());
         }
         private void Refresh()
         {

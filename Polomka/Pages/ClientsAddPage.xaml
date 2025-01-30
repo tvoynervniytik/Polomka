@@ -1,0 +1,90 @@
+﻿<Page x:Class="Polomka.Pages.ClientsAddPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Polomka.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1450"
+      Title="ClientsAddPage">
+
+    <Grid>
+        <!--
+Разметка страницы
+-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--
+Цветные поля
+-->
+        <Rectangle Grid.RowSpan="3"
+    Fill="#ffffe1"/>
+        <Rectangle Grid.ColumnSpan="3"
+    Fill="#ffffe1"/>
+
+        <!--
+       Кнопка назад
+       -->
+        <Button Style="{StaticResource back}" 
+       Grid.Row="1" Click="BackBtn_Click"/>
+        <!--
+Лого
+-->
+
+        <Image Source="\service_logo.png"
+       Height="80" MouseDown="Image_MouseDown"/>
+        <!--
+ Заголовок
+ -->
+        <TextBlock Text="Добавление клиента" 
+            Grid.Row="1" Grid.Column="1"
+            Style="{StaticResource Main}"/>
+
+
+        <StackPanel Grid.Row="2" Grid.Column="1">
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Фамилия" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="surnameTb" TextChanged="surnameTb_TextChanged"/>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Имя" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="nameTb" TextChanged="nameTb_TextChanged"/>
+                
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Отчество" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="patronymicTb" TextChanged="patronymicTb_TextChanged"/>
+                
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Дата рождения" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <DatePicker Name="Dp" SelectedDateChanged="Dp_SelectedDateChanged"/>
+
+            </StackPanel>
+            <Button Content="Добавить" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>
