@@ -21,7 +21,7 @@ namespace Polomka.Pages
     /// </summary>
     public partial class ClientsAddPage : Page
     {
-        private List<Client> clients {  get; set; }
+        private List<Client> clients { get; set; }
         public ClientsAddPage()
         {
             InitializeComponent();
@@ -40,28 +40,34 @@ namespace Polomka.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Dp.SelectedDate == null || surnameTb.Text.Trim() == "" || nameTb.Text.Trim() == "" || patronymicTb.Text.Trim() == "" ||
+                emailTb.Text.Trim() == "" || phoneTb.Text.Trim()=="" || genderCb.SelectedItem==null)
+                MessageBox.Show("Заполните все поля!", "", MessageBoxButton.OK, MessageBoxImage.Error);
+            else
+            {
 
+            }
         }
 
         private void surnameTb_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            OnlyLetters();
-        }
-        private void OnlyLetters()
         {
             string text = surnameTb.Text.Trim();
             string filteredText = new string(text.Where(c => char.IsLetter(c)).ToArray());
             surnameTb.Text = filteredText;
         }
-
+        
         private void nameTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            OnlyLetters();
+            string text = nameTb.Text.Trim();
+            string filteredText = new string(text.Where(c => char.IsLetter(c)).ToArray());
+            nameTb.Text = filteredText;
         }
 
         private void patronymicTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            OnlyLetters();
+            string text = patronymicTb.Text.Trim();
+            string filteredText = new string(text.Where(c => char.IsLetter(c)).ToArray());
+            patronymicTb.Text = filteredText;
         }
         private void Dp_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -85,6 +91,14 @@ namespace Polomka.Pages
                     }
                 }
             }
+        }
+
+        private void phoneTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            string text = phoneTb.Text.Trim();
+            string filteredText = new string(text.Where(c => char.IsDigit(c)).ToArray());
+            phoneTb.Text = filteredText;
         }
     }
 }
