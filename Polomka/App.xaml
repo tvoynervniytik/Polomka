@@ -4,11 +4,11 @@
              xmlns:local="clr-namespace:Polomka"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <Style TargetType="Border">
+        <!--<Style TargetType="Border">
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="BorderBrush" Value="#ff9c1a"/>
             <Setter Property="CornerRadius" Value="10"/>
-        </Style>
+        </Style>-->
         <!-- 
         Оформление текстов в TextBlock и TextBox 
         1. TextBlock'а 

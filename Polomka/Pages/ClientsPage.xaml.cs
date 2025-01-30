@@ -71,8 +71,8 @@ namespace Polomka.Pages
         private void HLDelete_Click(object sender, RoutedEventArgs e)
         {
             var clientDel = (sender as Hyperlink).DataContext as Client;
-            List<Client> client= new List<Client>(DBConnection.polomka.Client);
-            if (clients.Where(i => i.ID == clientDel.ID).Count() == 0)
+            List<ClientService> client = new List<ClientService>(DBConnection.polomka.ClientService);
+            if (client.Where(i => i.ID == clientDel.ID).Count() == 0)
             {
                 {
                     try

@@ -1,4 +1,5 @@
-﻿using Polomka.DB;
+﻿using Microsoft.Win32;
+using Polomka.DB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,9 @@ namespace Polomka.Pages
     /// </summary>
     public partial class ClientsAddPage : Page
     {
+
+        public string ImagePath { get; set; }
+        public string ImageDirectory { get; set; }
         private List<Client> clients { get; set; }
         public ClientsAddPage()
         {
@@ -45,7 +49,23 @@ namespace Polomka.Pages
                 MessageBox.Show("Заполните все поля!", "", MessageBoxButton.OK, MessageBoxImage.Error);
             else
             {
-
+                Client client = new Client();
+                client.PhotoPath = ImagePath;
+                client.FirstName = surnameTb.Text.Trim();
+                client.LastName = nameTb.Text.Trim();
+                client.Patronymic = patronymicTb.Text.Trim();
+                client.Birthday = Dp.SelectedDate;
+                client.Email = emailTb.Text.Trim();
+                client.Phone = phoneTb.Text.Trim();
+                client.RegistrationDate = DateTime.Now;
+                if (genderCb.SelectedIndex == 0)
+                    client.GenderCode = "1";
+                else if (genderCb.SelectedIndex == 1)
+                    client.GenderCode = "2";
+                DBConnection.polomka.Client.Add(client);
+                DBConnection.polomka.SaveChanges();
+                MessageBox.Show($"Пользователь {client.FirstName} {client.LastName[0]}. {client.Patronymic[0]}. успешно добавлен в {client.RegistrationDate}", "", MessageBoxButton.OK, MessageBoxImage.Information);
+                NavigationService.Navigate(new ClientsPage());
             }
         }
 
@@ -99,6 +119,57 @@ namespace Polomka.Pages
             string text = phoneTb.Text.Trim();
             string filteredText = new string(text.Where(c => char.IsDigit(c)).ToArray());
             phoneTb.Text = filteredText;
+        }
+
+        private void photoBtn_Click(object sender, RoutedEventArgs e)
+        {
+            AddPhoto();
+            if (ImagePath != null)
+                photoDelBtn.Visibility = Visibility.Visible;
+        }
+        private void AddPhoto()
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog()
+                {
+                    Filter = "*.png|*.png|*.jpeg|*.jpeg|*.jpg|*.jpg"
+                };
+
+                if (openFileDialog.ShowDialog().GetValueOrDefault())
+                {
+                    string selectedImagePath = openFileDialog.FileName;
+
+                    string fileName = System.IO.Path.GetFileName(selectedImagePath);
+                    string projectDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    string targetDirectory = System.IO.Path.Combine(projectDirectory, "Images");
+                    System.IO.Directory.CreateDirectory(targetDirectory);
+                    string newFilePath = System.IO.Path.Combine(targetDirectory, fileName);
+                    System.IO.File.Copy(selectedImagePath, newFilePath, true);
+
+                    ImagePath = newFilePath;
+
+                    img.Source = new BitmapImage(new Uri(ImagePath));
+                    //this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                ImagePath = null;
+
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void DelPhotoCommand()
+        {
+            ImagePath = "";
+            photoDelBtn.Visibility = Visibility.Hidden;
+            img.Source = null;
+        }
+        private void photoDelBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DelPhotoCommand();
+            photoDelBtn.Visibility = Visibility.Hidden;
         }
     }
 }
