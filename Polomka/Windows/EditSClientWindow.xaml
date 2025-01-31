@@ -9,7 +9,6 @@
       Title="Редактирование клиента">
 
     <Grid>
-
         <!--
 Разметка страницы
 -->
@@ -36,7 +35,7 @@
        Кнопка назад
        -->
         <Button Style="{StaticResource back}" 
-       Grid.Row="1" />
+       Grid.Row="1" Click="BackBtn_Click"/>
         <!--
 Лого
 -->
@@ -46,151 +45,107 @@
         <!--
  Заголовок
  -->
-        <TextBlock Text="Редактировнаие клиента" 
+        <TextBlock Text="Редактировать клиента" 
             Grid.Row="1" Grid.Column="1"
             Style="{StaticResource Main}"/>
-            
-
-    <!--
-    Кнопка назад
-    -->
-    <Button Style="{StaticResource back}" 
-        Grid.Row="1" Click="Button_Click"/>
 
 
-            <!--
-        Основная часть
-        -->
-            <StackPanel Grid.Column="1" 
-                    Grid.Row="2"
-                    Orientation="Vertical"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal">
-                    <StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="10 0 10 10">
-                            <TextBlock Text="ID услуги:"
-                               Width="310"
-                               Style="{StaticResource default}"/>
-                            <TextBox x:Name="idTb"
-                                     IsEnabled="False"
-                                     Margin="10"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="10 0 10 0">
-                            <TextBlock Text="
-                               Наименование услуги:"
-                               TextWrapping="Wrap"
-                               Width="310"
-                               Style="{StaticResource default}"/>
-                            <TextBox x:Name="nameTb"
-                             Margin="10"
-                             Width="400"
-                             Height="100"
-                             TextWrapping="Wrap"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="Продолжительность:"
-                                   TextWrapping="Wrap"
-                                   Width="310"
-                                   Style="{StaticResource default}"/>
-                            <TextBox x:Name="durationTb" 
-                                 Width="150"
-                                 Margin="10"/>
-                            <TextBlock Text="мин"
-                                   Margin="0 15 0 0"
-                                   Style="{StaticResource default}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="Стоимость услуги:"
-                               TextWrapping="Wrap"
-                               Width="310"
-                               Style="{StaticResource default}"/>
-                            <TextBox x:Name="costTb" 
-                             Width="150"
-                             Margin="10 0"/>
-                            <TextBlock Text="₽" 
-                               Style="{StaticResource default}"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="10">
-                            <TextBlock Text="Скидка услуги:"
-                               TextWrapping="Wrap"
-                               Width="310"
-                               Style="{StaticResource default}"/>
-                            <TextBox x:Name="discountTb" 
-                             Margin="10"
-                             Width="100"/>
-                            <TextBlock Style="{StaticResource default}"
-                               Text="%"/>
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal" Margin="10 0 10 10">
-                            <TextBlock Text="
-                               Описание услуги:"
-                               TextWrapping="Wrap"
-                               Width="310"
-                               Style="{StaticResource default}"/>
-                            <TextBox x:Name="descriptionTb"
-                             Margin="10"
-                             Height="200"
-                             Width="400"
-                             TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="Добавление фото:" 
-                                   TextAlignment="Center"
-                                   Style="{StaticResource default}"/>
-                        <Image Width="300"
-                               Height="190"
-                               x:Name="img"
-                               Source="{Binding ImagePath}"/>
-                        <StackPanel Orientation="Horizontal"
-                                    HorizontalAlignment="Center">
-                            <Button Width="200"
-                                x:Name="photoBtn"
-                                Content="выбрать фото" 
-                                Command="{Binding AddPhotoCommand}" 
-                                Click="photoBtn_Click"
-                                />
-                            <Button Width="200"
-                                x:Name="photoDelBtn"
-                                Background="red"
-                                Content="удалить фото" 
-                                Command="{Binding DelPhotoCommand}" Click="photoDelBtn_Click" 
-                                />
+        <StackPanel Grid.Row="2" Grid.Column="1" VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Margin="200 0">
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Фамилия" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="surnameTb" TextChanged="surnameTb_TextChanged"/>
 
-                        </StackPanel>
-                        <ListView x:Name="photosLv" Height="250" Width="400"
-                                  ItemsSource="{Binding servicePhotos}">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn Header="Фото" Width="390">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Image Source="{Binding PhotoPath}"
-                                                       Width="370"/>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                        <Button Width="auto"
-                                x:Name="photoDopBtn"
-                                Content="выбрать доп. фото" 
-                                Click="photoDopBtn_Click"
-                                />
-                        <Button Width="auto"
-                                x:Name="photoDopDelBtn"
-                                Content="удалить доп. фото" 
-                                Background="Red" Click="photoDopDelBtn_Click"/>
-                    </StackPanel>
-                </StackPanel>
-                <Button x:Name="addBtn" 
-                        Content="редактировать"
-                        Width="230"
-                        Margin="0 -25 0 0"
-                        Click="addBtn_Click"/>
             </StackPanel>
-        </Grid>
-   
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Имя" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="nameTb" TextChanged="nameTb_TextChanged"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Отчество" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="patronymicTb" TextChanged="patronymicTb_TextChanged"/>
+
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Дата рождения" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <DatePicker Name="Dp" SelectedDateChanged="Dp_SelectedDateChanged"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="email" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="emailTb"/>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Телефон" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <TextBox x:Name="phoneTb" TextChanged="phoneTb_TextChanged"/>
+
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Width="500"
+                        Margin="0 10">
+                <TextBlock Text="Пол" 
+                           Margin="0 0 10 0"
+                           Style="{StaticResource default}"/>
+                <ComboBox Margin="10 0" Width="200" x:Name="genderCb">
+                    <ComboBoxItem>
+                        <TextBlock Text="Мужской"/>
+                    </ComboBoxItem>
+                    <ComboBoxItem>
+                        <TextBlock Text="Женский"/>
+                    </ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <Button Content="Добавить" 
+                    Margin="0 50"
+                    Click="Button_Click"/>
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Right">
+            <TextBlock Text="Добавление фото:" 
+               TextAlignment="Center"
+               Style="{StaticResource default}"/>
+            <Image Width="500"
+           x:Name="img"
+           Source="{Binding ImagePath}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Width="200"
+            x:Name="photoBtn"
+            Content="выбрать фото" 
+            Command="{Binding AddPhotoCommand}" 
+            Click="photoBtn_Click"
+            />
+                <Button Width="200"
+             x:Name="photoDelBtn"
+             Background="red"
+             Content="удалить фото" 
+                Visibility="Visible"
+             Command="{Binding DelPhotoCommand}" Click="photoDelBtn_Click" 
+             />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+
 </Page>
