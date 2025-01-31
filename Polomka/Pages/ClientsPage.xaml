@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Polomka.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="900" d:DesignWidth="1450"
-      Title="ClientsPage">
+      Title="ClientsPage" Loaded="Page_Loaded">
 
     <Grid>
         
@@ -118,7 +118,7 @@
                                         <ColumnDefinition Width="120"/>
                                         <ColumnDefinition Width="270"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding PhotoPath}"/>
+                                    <Image Source="{Binding Image}"/>
 
 
                                     <StackPanel Margin="10"

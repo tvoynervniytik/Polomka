@@ -16,7 +16,7 @@ namespace Polomka.DB
     {
         public int ID { get; set; }
         public int ServiceID { get; set; }
-        public string PhotoPath { get; set; }
+        public byte[] PhotoPath { get; set; }
     
         public virtual Service Service { get; set; }
     }

@@ -31,6 +31,8 @@ namespace Polomka.Pages
             DataContext = this;
         }
 
+        
+
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new MainPage());
@@ -45,6 +47,7 @@ namespace Polomka.Pages
         }
         private void Refresh()
         {
+            
             clients = new List<Client>(DBConnection.polomka.Client);
             if (dateCb.SelectedItem != null)
             {
@@ -66,6 +69,7 @@ namespace Polomka.Pages
                 clients = clients.Where(i => i.GenderCode != "2").ToList();
             }
             clientsLv.ItemsSource = clients;
+
         }
 
         private void HLDelete_Click(object sender, RoutedEventArgs e)
@@ -122,6 +126,11 @@ namespace Polomka.Pages
         }
 
         private void femaleChb_Click_1(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Refresh();
         }
