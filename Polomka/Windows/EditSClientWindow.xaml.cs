@@ -31,6 +31,13 @@ namespace Polomka.Windows
             InitializeComponent();
             ImagePath = client.PhotoPath;
             currentClient = client;
+            emailTb.Text = client.Email;
+            nameTb.Text = client.LastName;
+            surnameTb.Text = client.FirstName;
+            patronymicTb.Text = client.Patronymic;
+            phoneTb.Text = client.Phone;
+            Dp.SelectedDate = client.Birthday;
+            genderCb.SelectedIndex = int.Parse(client.GenderCode) - 1;
             this.DataContext = this;
         }
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)

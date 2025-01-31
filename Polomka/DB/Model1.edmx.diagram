@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2607d6276c7e49338965f1db424d166c" Name="Diagram1" ZoomLevel="47">
+      <Diagram DiagramId="487eb0f092ed4c279c9544ed66f323de" Name="Diagram1">
         <EntityTypeShape EntityType="PolomkaModel.Client" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="PolomkaModel.ClientService" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="PolomkaModel.DocumentByService" Width="1.5" PointX="5.25" PointY="10" IsExpanded="true" />
