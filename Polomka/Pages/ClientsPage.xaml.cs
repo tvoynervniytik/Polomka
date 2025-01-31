@@ -1,4 +1,5 @@
 ﻿using Polomka.DB;
+using Polomka.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,7 @@ namespace Polomka.Pages
         {
             InitializeComponent();
             Refresh();
-            this.DataContext = this;
+            DataContext = this;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
@@ -56,15 +57,14 @@ namespace Polomka.Pages
             }
             if (surnameTb.Text != "")
                 clients = clients.Where(c => c.FirstName.ToLower().StartsWith(surnameTb.Text.Trim().ToLower())).ToList();
-            //if (maleChb.IsChecked == false)
-            //{
-            //    clients = clients.Where(i => i.GenderCode != "1").ToList();
-            //}
-            //else clients = clients.Where(i=>i.GenderCode == "1" ).ToList();
-            //if (femaleChb.IsChecked == false)
-            //{
-            //    clients = clients.Where(i => i.GenderCode != "2").ToList();
-            //}
+            if (maleChb.IsChecked == false)
+            {
+                clients = clients.Where(i => i.GenderCode != "1").ToList();
+            }
+            if (femaleChb.IsChecked == false)
+            {
+                clients = clients.Where(i => i.GenderCode != "2").ToList();
+            }
             clientsLv.ItemsSource = clients;
         }
 
@@ -98,31 +98,30 @@ namespace Polomka.Pages
         }
         private void HLEdit_Click(object sender, RoutedEventArgs e)
         {
-            var serviceDEdit = (sender as Hyperlink).DataContext as Service;
+            var seclientDEdit = (sender as Hyperlink).DataContext as Client;
 
-            //EditServiceWindow editServiceWindow = new EditServiceWindow(serviceDEdit);
-            //Window window = Window.GetWindow(this);
-            //editServiceWindow.Show();
-            //window.Close();
+            NavigationService.Navigate(new EditSClientWindow(seclientDEdit));
 
             Refresh();
         }
 
         private void surnameTb_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Refresh();
-        }
-        private void maleChb_Checked(object sender, RoutedEventArgs e)
-        {
-            Refresh();
-        }
-
-        private void femaleChb_Checked(object sender, RoutedEventArgs e)
-        {
-            Refresh();
+              Refresh();
         }
 
         private void dateTb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Refresh();
+        }
+
+
+        private void maleChb_Click_1(object sender, RoutedEventArgs e)
+        {
+            Refresh();
+        }
+
+        private void femaleChb_Click_1(object sender, RoutedEventArgs e)
         {
             Refresh();
         }
