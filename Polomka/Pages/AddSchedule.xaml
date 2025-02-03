@@ -1,0 +1,156 @@
+﻿<Page x:Class="Polomka.Pages.AddSchedule"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Polomka.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1450"
+      Title="AddSchedule">
+
+    <Grid>
+        <!--
+Разметка страницы
+-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="150"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--
+Цветные поля
+-->
+        <Rectangle Grid.RowSpan="3"
+    Fill="#ffffe1"/>
+        <Rectangle Grid.ColumnSpan="3"
+    Fill="#ffffe1"/>
+
+        <!--
+        Кнопка назад
+        -->
+        <Button Style="{StaticResource back}" 
+        Grid.Row="1" Click="BackBtn_Click"/>
+        <!--
+ Лого
+ -->
+
+        <Image Source="\service_logo.png"
+        Height="80" MouseDown="Image_MouseDown"/>
+        <!--
+ Заголовок
+ -->
+        <TextBlock Text="Редактировать запись на услугу" 
+            Grid.Row="1" Grid.Column="1"
+            Style="{StaticResource Main}"/>
+
+            <!--
+    Основная часть
+    -->
+
+            <StackPanel Grid.Row="2" Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                <StackPanel Orientation="Horizontal"
+                        Height="500"
+                    
+                            >
+                    <!--Левая колонка-->
+                    <!--Услуга-->
+                <StackPanel Width="600" Background="#ffffe1"
+                        Margin="10 0"
+                        Height="390"
+                        VerticalAlignment="Center">
+                        <TextBlock Text="Услуга" 
+                           Style="{StaticResource default}"
+                           TextAlignment="Center"
+                           FontWeight="DemiBold"/>
+                        <StackPanel Orientation="Horizontal" Height="200" Margin="0 20">
+                            <TextBlock Text=" Наименование: " 
+                               Style="{StaticResource default}"/>
+                        <ComboBox Width="300" Name="servCb"
+                                  ItemsSource="{Binding services}"
+                                  VerticalAlignment="Top"
+                                  Height="150">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 20">
+                            <!--<TextBlock Text=" Длительность: " 
+                               Style="{StaticResource default}"/>
+                            <TextBox Background="white" 
+                             Width="100" 
+                             IsEnabled="False"
+                             TextWrapping="Wrap"
+                             x:Name="durationTb"/>
+                            <TextBlock Text=" мин" 
+                               Style="{StaticResource default}"/>-->
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--Правая колонка-->
+                    <StackPanel VerticalAlignment="Center">
+                        <!--Клиент-->
+                    <StackPanel Width="460" Background="#ffffe1"
+                        Margin="10 10">
+                            <TextBlock Text="Клиент" 
+                           Style="{StaticResource default}"
+                           TextAlignment="Center"
+                           FontWeight="DemiBold"/>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 20">
+                                <ComboBox Background="white" 
+                                      Width="300"
+                                      Height="90"
+                                      ItemsSource="{Binding clients}"
+                                      x:Name="clientsCb">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding FirstName}"/>
+                                                <TextBlock Text="{Binding LastName}"/>
+                                                <TextBlock Text="{Binding Patronymic}"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+                        <!--Дата-->
+                    <StackPanel Width="460" Background="#ffffe1"
+                        Margin="10 10">
+                            <TextBlock Text="Данные о записи" 
+                           Style="{StaticResource default}"
+                           TextAlignment="Center"
+                           FontWeight="DemiBold"/>
+                            <StackPanel Orientation="Horizontal" Margin="0 20">
+                                <TextBlock Text=" Дата: " 
+                               Style="{StaticResource default}"/>
+                                <DatePicker Height="50"
+                                    Name="dateDp"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 20">
+                                <TextBlock Text=" Время: " 
+                                   Style="{StaticResource default}"/>
+                                <TextBox Background="white" 
+                                Width="250"
+                                TextWrapping="Wrap"
+                                x:Name="timeTb" TextChanged="timeTb_TextChanged" />
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+                <Button Margin="10" Width="240" Content="редактировать"
+                    x:Name="addBtn" Click="addBtn_Click"/>
+            </StackPanel>
+        
+    </Grid>
+</Page>

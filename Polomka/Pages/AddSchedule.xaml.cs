@@ -17,29 +17,31 @@ using System.Windows.Shapes;
 namespace Polomka.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ClientServicesPage.xaml
+    /// Логика взаимодействия для AddSchedule.xaml
     /// </summary>
-    public partial class ClientServicesPage : Page
+    public partial class AddSchedule : Page
     {
         private string timeService;
         public static List<Service> services { get; set; }
         public static List<Client> clients { get; set; }
-        public ClientServicesPage()
+        public static ClientService us { get; set; }
+        public AddSchedule(ClientService clientService)
         {
             InitializeComponent();
             services = new List<Service>(DBConnection.polomka.Service);
             clients = new List<Client>(DBConnection.polomka.Client);
+            timeTb.Text = clientService.StartTime.TimeOfDay.ToString();
+            dateDp.SelectedDate = clientService.StartTime.Date;
+            clientsCb.SelectedItem = clients.FirstOrDefault(i=>i.ID == clientService.ClientID);
+            servCb.SelectedItem = services.FirstOrDefault(i=>i.ID == clientService.ServiceID);
+            us = clientService;
 
             this.DataContext = this;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (DBConnection.page == 0)
-                NavigationService.Navigate(new MainPage());
-            else 
-                NavigationService.Navigate(new SchedulePage());
-            DBConnection.page = 0;
+            NavigationService.Navigate(new SchedulePage());
         }
         private void Image_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -119,7 +121,6 @@ namespace Polomka.Pages
         {
             var serv = servCb.SelectedItem as Service;
             var client = clientsCb.SelectedItem as Client;
-            ClientService clientService = new ClientService();
             if (timeTb.Text == "" || dateDp.SelectedDate == null || client == null || serv == null)
             {
                 MessageBox.Show("Вы заполнили не все данные!", "Ошибка заполнения данных", MessageBoxButton.OK, MessageBoxImage.Error); ;
@@ -127,21 +128,17 @@ namespace Polomka.Pages
             else
             {
                 //Service service1 = new Service();
-                clientService.ServiceID = serv.ID;
-                clientService.ClientID = client.ID;
+                us.ServiceID = serv.ID;
+                us.ClientID = client.ID;
                 TimeSpan time = DateTime.Parse(timeService).TimeOfDay;
 
                 var startTime = dateDp.SelectedDate.ToString().Substring(0, 11) + time.ToString();
-                clientService.StartTime = DateTime.Parse(startTime.Trim());
+                us.StartTime = DateTime.Parse(startTime.Trim());
 
-                DBConnection.polomka.ClientService.Add(clientService);
+               
                 DBConnection.polomka.SaveChanges();
-                MessageBox.Show($"Добавлена запись на услугу \"{serv.Title.Trim()}\" клиента {client.FirstName.Trim()} {client.LastName.Trim()[0]}.{client.Patronymic.Trim()[0]}. на {startTime}");
-                if (DBConnection.page == 0)
-                    NavigationService.Navigate(new MainPage());
-                else
-                    NavigationService.Navigate(new SchedulePage());
-                DBConnection.page = 0;
+                MessageBox.Show($"Отредактирована запись на услугу \"{serv.Title.Trim()}\" клиента {client.FirstName.Trim()} {client.LastName.Trim()[0]}.{client.Patronymic.Trim()[0]}. на {startTime}");
+                NavigationService.Navigate(new SchedulePage());
             }
         }
     }

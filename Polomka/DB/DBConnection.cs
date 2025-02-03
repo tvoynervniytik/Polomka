@@ -11,7 +11,7 @@ namespace Polomka.DB
     internal class DBConnection
     {
         public static PolomkaEntities polomka = new PolomkaEntities();
-
+        public static int page = 0;
         public static void DisposeAndCreate()
         {
             //polomka.Dispose();
