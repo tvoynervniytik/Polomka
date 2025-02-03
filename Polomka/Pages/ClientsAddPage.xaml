@@ -127,9 +127,8 @@
             <TextBlock Text="Добавление фото:" 
                TextAlignment="Center"
                Style="{StaticResource default}"/>
-            <Image Width="500"
-           x:Name="img"
-           Source="{Binding Image}"/>
+            <Image Width="500" MaxHeight="400"
+           x:Name="img"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Width="200"
             x:Name="photoBtn"

@@ -118,8 +118,8 @@
                 </ComboBox>
             </StackPanel>
 
-            <Button Content="Добавить" 
-                    Margin="0 50"
+            <Button Content="редактировать" 
+                    Margin="0 50" Width="250"
                     Click="Button_Click"/>
         </StackPanel>
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"

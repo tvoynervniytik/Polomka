@@ -9,6 +9,7 @@
       Title="ServicesPage">
 
     <Grid>
+
         <!--
 Разметка страницы
 -->
@@ -32,22 +33,170 @@
     Fill="#ffffe1"/>
 
         <!--
-        Кнопка назад
-        -->
+       Кнопка назад
+       -->
         <Button Style="{StaticResource back}" 
-        Grid.Row="1" Click="BackBtn_Click"/>
+       Grid.Row="1" Click="BackBtn_Click"/>
         <!--
- Лого
- -->
+Лого
+-->
 
         <Image Source="\service_logo.png"
-        Height="80" MouseDown="Image_MouseDown"/>
+       Height="80" MouseDown="Image_MouseDown"/>
         <!--
  Заголовок
  -->
-        <TextBlock Text="Сервис" 
+        <TextBlock Text="Услуги" 
             Grid.Row="1" Grid.Column="1"
             Style="{StaticResource Main}"/>
 
+        <StackPanel Grid.Row="2" Grid.Column="1">
+
+            <StackPanel Orientation="Vertical"
+                        Margin="0 0 0 30">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Стоимость:" 
+                           Style="{StaticResource default}"/>
+                    <ComboBox x:Name="costCb" Width="200" SelectionChanged="costCb_SelectionChanged">
+                        <ComboBoxItem>
+                            <TextBlock Text="По возрастанию"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="По убыванию"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="Без сортировки"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <TextBlock Text="Скидка:" 
+                           Margin="30 0 0 0"
+                           Style="{StaticResource default}"/>
+                    <ComboBox x:Name="saleCb" Width="200" SelectionChanged="saleCb_SelectionChanged">
+                        <ComboBoxItem>
+                            <TextBlock Text="0 до 10%"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="10 до 30%"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="30 до 70%"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <TextBlock Text="70 до 100%"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                    <Button x:Name="delSaleBtn"
+                        Style="{StaticResource circle}"
+                        Content="x" Click="delSaleBtn_Click"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                           Text="Наименование:"
+                           Style="{StaticResource default}"/>
+                    <TextBox x:Name="nameTb" TextChanged="nameTb_TextChanged" />
+
+                </StackPanel>
+            </StackPanel>
+
+         
+
+            <StackPanel Orientation="Vertical" Margin="20 0 20 20"
+                        HorizontalAlignment="Center">
+
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                        x:Name="servicesLv"
+                        Width="848"
+                        Height="400"
+                        d:ItemsSource="{d:SampleData ItemCount=6}"
+                        BorderThickness="4"
+                        BorderBrush="#ffffe1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1"
+                                    BorderBrush="Gray"
+                                    Width="400"
+                                    Height="235">
+                                <Grid Margin="10" Background="{Binding BackgroundColor}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="270"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Image Source="{Binding MainImagePath}"/>
+
+
+                                    <StackPanel Margin="10"
+                                Grid.Column="1">
+                                        <TextBlock Text="{Binding Title}"
+                                   FontWeight="Bold"
+                                   FontSize="16" 
+                                   TextWrapping="Wrap"
+                                   
+                                   Foreground="Gray"
+                                   Margin="5 10 0 0"/>
+                                        <StackPanel Orientation="Horizontal">
+                                           
+                                            <TextBlock Foreground="Gray"
+                                   Text="{Binding Cost, StringFormat=' {0} рублей за'}"
+                                   FontSize="14" 
+                                   Margin="5 0 0 0"/>
+                                            <TextBlock Foreground="Gray"
+                                   Text="{Binding DurationInMinutes, StringFormat=' {0} минут'}"
+                                   FontSize="14"/>
+                                        </StackPanel>
+                                        <TextBlock Text="{Binding Discount, StringFormat='* скидка {0}% '}"
+                                   Margin="5 0 0 0"
+                                   Visibility="{Binding Visibility}"
+                                   Foreground="Gray"/>
+
+
+                                        <StackPanel Orientation="Horizontal" 
+                                    Width="200"
+                                    Visibility="{Binding VisibilityAdmin}">
+                                            <TextBlock FontSize="14">
+                            
+                                <Hyperlink Foreground="Gray"
+                                           Click="HLEdit_Click"
+                                           x:Name="HLedit">
+                                   <Border BorderBrush="Gray" BorderThickness="1">
+                                        <TextBlock Text=" редактировать " Margin="5 0 0 0"/>
+                                   </Border>    
+                                </Hyperlink>        
+                            </TextBlock>
+                                            <TextBlock FontSize="14" Margin="10 0">
+                                <Hyperlink Foreground="Gray"
+                                           Click="HLDelete_Click" 
+                                           x:Name="HLDelete">
+                                    <Border BorderBrush="Gray" BorderThickness="1">
+                                         <TextBlock Text=" удалить " 
+                                              />
+                                        </Border>
+                                </Hyperlink>
+                            </TextBlock>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </Border>
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+                <StackPanel Orientation="Horizontal" 
+                            Margin="20 20">
+                    <StackPanel x:Name="editStP" 
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Orientation="Horizontal">
+                        <Button x:Name="addBtn"
+                                Style="{StaticResource circle}"
+                                Content="+" Click="addBtn_Click"/>
+                    </StackPanel>
+                    </StackPanel>
+                    </StackPanel>
+                </StackPanel>
     </Grid>
 </Page>
